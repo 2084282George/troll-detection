@@ -1,0 +1,5 @@
+for f in *_1.txt; do
+ for g in *_2.txt; do
+  python naiveBagOfWords.py $f $g;
+   done;
+   done
