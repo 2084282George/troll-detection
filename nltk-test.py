@@ -10,32 +10,35 @@ rrp = RerankingParser.fetch_and_load('WSJ-PTB3', verbose=True)
 f1 = io.open(sys.argv[1], "r+").read().splitlines()
 f2 = io.open(sys.argv[2], "r+").read().splitlines()
 
+print len(f1)
+print len(f2)
+
 def pruneTree(tree):
     newT = ""
-    pc = ""
-    for c in tree:
-        #do thing to strip tree
-        newT+= c
+    sT = tree.split()
+    for item in sT:
+        if item[0] == "(":
+            newT += item
+        else:
+            for char in item:
+                if char == ")":
+                    newT += char
+    return newT
  
+def makeTrees (f):
+    trees = []
+    for tweet in f:
+        newTweet = tweet.encode('ascii', 'ignore').replace("@", "")
+        if len(newTweet)!=0:
+            newTree = rrp.simple_parse(newTweet)
+            pTree = pruneTree(newTree)
+            trees.append(pTree)
+    return trees
 
-newTree = rrp.simple_parse("Here's a more simple sentence. This second part might be harder.")
 
 
+trees1 = makeTrees(f1)
+trees2 = makeTrees(f2)
 
-for tweet in f1:
-    newTweet = tweet.encode('ascii', 'ignore')
-    if len(newTweet)!=0:
-        newTree = rrp.simple_parse(newTweet)
-        print newTree
-        time.sleep(0.1)
-
-print trees1
-
-for tweet in f2:
-    newTweet = tweet.encode('ascii', 'ignore')
-    if len(newTweet)!=0:
-        newTree = rrp.simple_parse(newTweet)
-        trees2.append(newTree)
-
-print trees2
-
+print len(trees1)
+print len(trees2)
