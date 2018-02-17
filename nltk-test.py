@@ -3,6 +3,7 @@ import io
 import sys
 from bllipparser import RerankingParser
 from anytree import Node, RenderTree
+from anytree.importer import DictImporter
 import time
 import zss
 import editdistance
@@ -12,14 +13,19 @@ import numpy as np
 
 rrp = RerankingParser.fetch_and_load('WSJ-PTB3', verbose=True)
 
+importer = DictImporter()
+
 
 
 f1 = io.open(sys.argv[1], "r+").read().splitlines()
-#f1 = ["Here's a test sentence for Erin to show her what I'm working with."]
 f2 = io.open(sys.argv[2], "r+").read().splitlines()
 
 print len(f1)
 print len(f2)
+
+if len(f1) == 0 or len(f2)== 0:
+    print "at least one of the lists has no tweets, so quitting."
+    quit()
 
 grammar = r"""
   NP: {<DT|JJ|NN.*>+}          # Chunk sequences of DT, JJ, NN
@@ -93,13 +99,14 @@ def makeTrees (f):
         newTweet = tweet.encode('ascii', 'ignore').replace("@", "")
         if len(newTweet)!=0:
             newTree = rrp.simple_parse(newTweet)
-            #pTree = pruneTree(newTree)
             sTree = parse_sexp(newTree)
             pprint(sTree)
-            A = WeirdNode("root")
-            A = findChildren(sTree[0], A)
-            printNTree(A)
-            trees.append(A)
+            d = {}
+            dTree = tMake(sTree[0])
+            root = importer.import_(dTree)
+            print(RenderTree(root))
+            trees.append(root)
+            d = {}
     return trees
 
 def makePOS (f):
@@ -151,7 +158,90 @@ def lcs_length(a, b):
 
 
 
-trees1 = makePOS(f1)
+def treeMake(listOfLists, d):
+    if len(listOfLists) is 1:
+        print "***\nThis only has one element:"
+        pprint(listOfLists)
+        return treeMake(listOfLists[0], d)
+    else:
+        print "***\nWorking On:"
+        pprint(listOfLists)
+        for item in listOfLists:
+            d['a'] = item[0]
+            if isinstance(item[1], list):
+                d['children'] = treeMake(item[1], {}) 
+            else:
+                d['b'] = item[1]
+        return d
+
+def tMake (item):
+        d = {}
+        #time.sleep(0.1)
+
+        #print "***\nTHIS IS THE ITEM:"
+        #pprint(item)
+        #print "WITH LENGTH"
+        #print len(item)
+
+        if all(type(x)==list for x in item[1:]):
+
+            #print "IT IS A LIST OF LISTS"
+            d['a'] = item[0]
+
+            y = item[1:]
+            #print "SO WORKING ON:"
+            pprint(y)
+            d['children'] = [tMake(x) for x in y]
+                
+        elif all(type(x)==str for x in item) and  len(item)==2:
+
+            #print "IT HAS 2 STRINGS\n***"
+            d['a'] = item[0]
+                
+            d['b'] = item[1]
+        else:
+            print "THIS SHOULD NEVER HAPPEN, SOMETHING IS WRONG\n***"
+            print "***\nTHIS IS THE ITEM:"
+            pprint(item)
+            print "WITH LENGTH"
+            print len(item)
+            exit()
+        return d
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+trees1 = makeTrees(f1)
 
 #print len(trees1)
 #print "\n***\n"
@@ -180,29 +270,36 @@ trees2 = makePOS(f2)
 
 distancesWithin = []
 length = []
+lcs = []
 
 for x in trees2:
     length.append(len(x))
     for y in trees2:
         distancesWithin.append(editdistance.eval(x, y))
+        lcs.append(lcs_length(x, y))
 
 mDist2 = np.mean(distancesWithin)
 mL = np.mean(length)
-
+mLcs = np.mean(lcs)
 print "\nThe mean edit distance of PoS for " + sys.argv[2] + " is:\n"
 pprint (mDist2)
 pprint (mL)
+pprint (mLcs)
 
 distancesWithin = []
+lcs = []
 
 for x in trees1:
     for y in trees2:
         distancesWithin.append(editdistance.eval(x, y))
+        lcs.append(lcs_length(x, y))
+        
 
 mDist3 = np.mean(distancesWithin)
-
+mLcs = np.mean(lcs)
 print "\nThe mean edit distance of PoS between " + sys.argv[1] +  " and " + sys.argv[2] + " is:\n"
 pprint (mDist3)
+pprint (mLcs)
 
 #print len(trees2)
 #print "\n***\n"
