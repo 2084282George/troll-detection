@@ -95,18 +95,18 @@ def pruneTree(tree):
 
 def makeTrees (f):
     trees = []
+    x = 0
     for tweet in f:
         newTweet = tweet.encode('ascii', 'ignore').replace("@", "")
         if len(newTweet)!=0:
             newTree = rrp.simple_parse(newTweet)
             sTree = parse_sexp(newTree)
-            pprint(sTree)
-            d = {}
+            #pprint(sTree)
             dTree = tMake(sTree[0])
             root = importer.import_(dTree)
-            print(RenderTree(root))
             trees.append(root)
-            d = {}
+            x+=1
+            print "done " + str(x) + " tweets"
     return trees
 
 def makePOS (f):
@@ -186,17 +186,16 @@ def tMake (item):
         if all(type(x)==list for x in item[1:]):
 
             #print "IT IS A LIST OF LISTS"
-            d['a'] = item[0]
+            d['label'] = item[0]
 
             y = item[1:]
             #print "SO WORKING ON:"
-            pprint(y)
             d['children'] = [tMake(x) for x in y]
                 
         elif all(type(x)==str for x in item) and  len(item)==2:
 
             #print "IT HAS 2 STRINGS\n***"
-            d['a'] = item[0]
+            d['label'] = item[0]
                 
             d['b'] = item[1]
         else:
@@ -205,12 +204,15 @@ def tMake (item):
             pprint(item)
             print "WITH LENGTH"
             print len(item)
-            exit()
         return d
             
 
 
-
+def nodeDist(A, B):
+    if A==B:
+        return 0
+    else:
+        return 1
 
 
 
@@ -249,57 +251,61 @@ trees1 = makeTrees(f1)
 #print "\n***\n"
 
 distancesWithin = []
-length = []
-lcs = []
+#length = []
+
+done = 0
 
 for x in trees1:
-    length.append(len(x))
+    #length.append(len(x))
     for y in trees1:
-        distancesWithin.append(editdistance.eval(x, y))
-        lcs.append(lcs_length(x, y))
+        distance = zss.simple_distance(x, y, label_dist= nodeDist)
+        distancesWithin.append(distance)
+        done+=1
+        print "Done %i comparisons", done
 
 mDist1 = np.mean(distancesWithin)
-mL = np.mean(length)
-mLcs = np.mean(lcs)
-print "\nThe mean edit distance of PoS for " + sys.argv[1] + " is:\n"
+#mL = np.mean(length)
+print "\nThe mean edit distance of Tree for " + sys.argv[1] + " is:\n"
 pprint (mDist1)
-pprint (mL)
-pprint (mLcs)
+#pprint (mL)
 
-trees2 = makePOS(f2)
+
+trees2 = makeTrees(f2)
+
+#print len(trees1)
+#print "\n***\n"
+#pprint(trees1)
+#print "\n***\n"
 
 distancesWithin = []
-length = []
-lcs = []
+#length = []
+
 
 for x in trees2:
-    length.append(len(x))
+    #length.append(len(x))
     for y in trees2:
-        distancesWithin.append(editdistance.eval(x, y))
-        lcs.append(lcs_length(x, y))
+        distance = zss.simple_distance(x, y)
+        distancesWithin.append(distance)
 
 mDist2 = np.mean(distancesWithin)
-mL = np.mean(length)
-mLcs = np.mean(lcs)
-print "\nThe mean edit distance of PoS for " + sys.argv[2] + " is:\n"
+#mL = np.mean(length)
+print "\nThe mean edit distance of Tree for " + sys.argv[2] + " is:\n"
 pprint (mDist2)
-pprint (mL)
-pprint (mLcs)
+#pprint (mL)
 
 distancesWithin = []
-lcs = []
 
 for x in trees1:
     for y in trees2:
-        distancesWithin.append(editdistance.eval(x, y))
-        lcs.append(lcs_length(x, y))
+        distancesWithin.append(zss.simple_distance(x, y))
+        
         
 
 mDist3 = np.mean(distancesWithin)
-mLcs = np.mean(lcs)
-print "\nThe mean edit distance of PoS between " + sys.argv[1] +  " and " + sys.argv[2] + " is:\n"
+
+print "\nThe mean edit distance of Tree between " + sys.argv[1] +  " and " + sys.argv[2] + " is:\n"
 pprint (mDist3)
-pprint (mLcs)
+
 
 #print len(trees2)
 #print "\n***\n"
