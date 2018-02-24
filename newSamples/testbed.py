@@ -26,30 +26,39 @@ if __name__ == '__main__':
     api = tweepy.API(auth)
 
     users = tweepy.Cursor(api.followers, screen_name=twitterUser).items()
-    print users
 
     while True:
+
+        last_username = twitterUser
+
         try:
             user = next(users)
-        except tweepy.TweepError:
-            time.sleep(60*15)
+        except tweepy.TweepError as e:
+            print "sleeping for a bit"
+            print(e)
+            for x in range(0, 15):
+                print "slept for",x,"minutes"
+                time.sleep(60)
             user = next(users)
         except StopIteration:
-            break
+            users = tweepy.Cursor(api.followers, screen_name=last_username).items()
+
         print "@" + user.screen_name
         twitterUser = user.screen_name
+
         try:
             stuff = api.user_timeline(screen_name = twitterUser, count = 3000, include_rts = False)
+            f1 = io.open(twitterUser+ "_1.txt", "w+")
+            f2 = io.open(twitterUser+ "_2.txt", "w+")
+            split = 0
+            for status in stuff:
+                if (split%2==0):
+                    f1.write(status.text + '\n')
+                else:
+                    f2.write(status.text + '\n')
+                split+=1
+            f1.close()
+            f2.close()
+
         except tweepy.TweepError:
-            
-        f1 = io.open(twitterUser+ "_1.txt", "w+")
-        f2 = io.open(twitterUser+ "_2.txt", "w+")
-        split = 0
-        for status in stuff:
-            if (split%2==0):
-                f1.write(status.text + '\n')
-            else:
-                f2.write(status.text + '\n')
-            split+=1
-        f1.close()
-        f2.close()
+            user = next(users)

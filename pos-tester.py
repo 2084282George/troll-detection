@@ -8,6 +8,7 @@ import time
 import zss
 import editdistance
 from zss import Node
+#!/usr/bin/env python
 from pprint import pprint
 import numpy as np
 
@@ -30,7 +31,6 @@ if len(f1) == 0 or len(f2)== 0:
     quit()
 
 def makePOS (f):
-    print f
     trees = []
     for tweet in f:
         newTweet = tweet.encode('ascii', 'ignore').replace("@", "")

@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import nltk
 import io
 import sys

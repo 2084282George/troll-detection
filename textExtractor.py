@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import json
 
 tweets_data_path = "twitter_data.json"

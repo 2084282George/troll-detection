@@ -1,0 +1,193 @@
+Valve abre código de seu tradutor de Direct3D para OpenGL
+
+http://t.co/STxkBVnJ4v http://t.co/E7goNpzLTe
+Confira este novo artigo na Unidev, onde o autor explica a otimização de memória usando cache.... http://t.co/5xvFmsjZTx
+Confira neste ótimo documentário onde mostra que, décadas após o surgimento do videogame no Brasil, além de serem... http://t.co/dNSnSqo2yF
+Mauricio Cunha postou um novo artigo na Unidev, onde ele mostra como fazer os GameObjects piscarem, criando um... http://t.co/Aon4aJy0wF
+Confira este novo artigo da Unidev, onde o autor ensina a como usar o diagnostico de gráficos para capturar e... http://t.co/lxpZW3VWGv
+Add-on da Unity3D será oferecido de graça para desenvolvedores independentes de Xbox One!
+
+Saiba mais aqui:... http://t.co/4YJNc0wDC6
+Palestra com Jasiel Macedo, criador do jogo brasileiro Pesadelo.
+Dia 05 de novembro, as 9:00h, entrada gratuita.... http://t.co/7i1nlSA8N2
+Anúncio da Microsoft na BGS 2013 confirma fabricação nacional do XOne.
+
+Console que será lançado dia 22/11 já é... http://t.co/TdRPxopuVj
+Pode tomar um calmante: o PlayStation 4 vai chegar ao Brasil por R$ 4 mil!
+
+Veja mais:
+http://t.co/9uL9h0g6J8 http://t.co/bMgUqifEFh
+Soma é mais um jogo com o objetivo de te assustar!
+Dos mesmos criadores de Amnesia, a empresa Frictional Games... http://t.co/KN728YDm6j
+Pixar do Canada fecha suas portas, e aproximadamente 100 funcionários são mandados embora.... http://t.co/XWXTCXJ1nf
+Estúdio brasileiro Critical Studio encerra suas atividades.
+
+Veja mais detalhes: http://t.co/CQIO1AcS98 http://t.co/HZldTOKVSE
+Kinect do Xbox One entende vozes de 2 pessoas simultaneamente.
+
+Dois jogadores poderão usar comandos de voz em... http://t.co/gkOyasqeHj
+Confira este novo artigo da Unidev, onde o autor ensina a criar um shader em HLSL para criar efeito em escala de... http://t.co/nwav5DiQAI
+Game mais caro já criado, 'GTA V' é lançado nesta terça-feira!
+Jogo controverso traz mundo aberto gigantesco e 3... http://t.co/PmUrt4BBz9
+"Olhando mais atentamente o Mapeamento de oclusão Parallax!"
+
+Confira neste novo artigo da Unidev, onde o autor... http://t.co/VUi0S2HYDH
+Então você quer trabalhar na undústria de Vídeo Games?
+http://t.co/fejJRxI2bG http://t.co/rLbALIdIgk
+Confira este ótimo tutorial de Unity3D, do Maurício Cunha, onde ele mostra como criar uma barra de energia para... http://t.co/MZKdlv0IQu
+PlayStation 4 já tem data de lançamento!! Foi divulgado na feira Gamescom, realizada nesta terça-feira em... http://t.co/o5Doi8uhS4
+Função de gravação de partidas no Xbox One exigirá assinatura paga!
+
+Para usar Game DVR, donos do console terão... http://t.co/RR5afNtPp0
+Para quem tem dúvidas para trabalhar com GUI na Unity3D, confira só este ótimo artigo em português, onde o autor... http://t.co/BtIgz0Qg2V
+Projeto de Lei quer tributar apps comprados pela internet.
+
+Saiba mais:
+http://t.co/zSxCoVsmND http://t.co/IyVfF279oP
+Confira este novo artigo da Unidev: "Carregando e exibindo arquivos BVH", onde Edin Mujagic ensina a trabalhar... http://t.co/ghsDPAMUwt
+Unity anuncia lançamento da versão 4.2! Confira aqui as novidades e suas novas features:... http://t.co/z2nOifVQAk
+Para os desenvolvedores em Unity3D, confira este novo artigo da Unidev: Audio Streaming avançado no Unity3D!... http://t.co/Pc1rznZchp
+Está iniciando em programação com Directx?? Da uma olhada nesta série de 3 partes para iniciantes em Direct3D.... http://t.co/rOSAbbq96y
+Já desenvolveu um jogo e gostaria de expô-lo ao público?
+
+Conheça o SBO Games:
+http://t.co/dF9UNgD9zX http://t.co/5R0uz5Eig5
+Mais um artigo recuperado!
+Nesta série de 3 artigos, aprenda a desenvolver jogos para Game Boy Advanced!! Nível... http://t.co/0tIb4LLHpe
+A Autodesk lançou o primeiro Service Pack para o 3ds max 2014 corrigindo diversos problemas e bugs! Confira aqui... http://t.co/KQJHv4nqLu
+O site FX Guide publicou uma ótima série de artigos sobre visualização realista em Games e aplicações interativas... http://t.co/WPSHurolMv
+A Microsoft anunciou que a pré-venda da Edição de Lançamento do Xbox One no Brasil começará hoje(26 de junho de 2013)
+http://t.co/Zf4GGK2OML
+Já viram a nova Unidev?? Confira aqui: http://t.co/hstn3QTkHl
+Entre os dias 28 e 29 de junho de 2013, a segunda edição do evento Pira Game Dev trará várias palestras e... http://t.co/rzBZzO19RT
+## Artista 2D - Freelance
+
+Pessoal, estamos precisando de um ilustrador freelancer aqui na Unidev.
+Será... http://t.co/yK2IiGAusK
+Para a galera que usa ZBrush! Na comunidade brasileira de ZBrush, está rolando um super concurso de final de ano!... http://t.co/wLjIqRp6
+A Disney comprou a Lucasfilm!
+http://t.co/MDyUTMis http://t.co/f5oBT0Ci
+BlitzPlus gratuito por tempo limitado!
+http://t.co/Be3uqoz3 http://t.co/mBRY0VGC
+Lançada a versão 1.0 do Lazarus!
+http://t.co/N37BuTDp http://t.co/mVBjiZDF
+Para quem está tentando acessar a Unidev, pedimos um pouco mais de paciência, pois houve um acesso indevido... http://t.co/uCVuw3bz
+Crytek libera novas imagens incríveis de Crysis 3!
+http://t.co/66uGeEDi
+Tutorial teórico sobre materiais!
+http://t.co/lgJXABpl http://t.co/v2LnL0JV
+Anunciado a versão 4.0 da Unity3D!
+http://t.co/v2wASYU0 http://t.co/vWQQgjbm
+http://t.co/EdCXRCWm
+Boneco para animação custará 750 USD!
+http://t.co/35ymCBVh http://t.co/I2y7xdZD
+Ja se imaginou trabalhando na equipe de desenvolvimento da Unity3D? Aproveite agora que esta aberta a temporada... http://t.co/XWhJMDzb
+10 argumentos para convencer seus pais a trabalhar com game!
+http://t.co/l3XqwPzX
+Criadora de 'Final Fantasy' quer desenvolver jogos no Brasil!
+http://t.co/uGtEc0LS
+Tutorial sobre animação de personagens!
+http://t.co/0NNHIBtM
+Review do Photoshop CS 6!
+http://t.co/vBJaljwB http://t.co/Wflckxmm
+A Autodesk lançou o 3ds max 2013!
+http://t.co/4nFCIYH9 http://t.co/Sm0l1LJj
+The Art of Krishnamurti M. Costa | http://t.co/oy5ss39m
+Unreal Engine com suporte à Flash!
+http://t.co/mBBkEviP
+Brasileiros que desenvolve jogos!
+http://t.co/gSmKmGjv
+Vídeo mostrando a Viewport do Max 2013!
+http://t.co/dvb4GLsi
+Tutorial para criar HUD e UI na Engine UDK!
+http://t.co/eskyGWqP
+Plug-in de AI para o Unity3D!
+http://t.co/TwyWmMfg
+Mais um vídeo com novidades do 3ds max 2013!
+http://t.co/5Oscdea1
+Serie de videos tutoriais da CryEngine!
+http://t.co/rbzIGb7F
+Lançado o Script Form que simula Z-Spheres!
+http://t.co/nwZF67TR
+Pixologic lança novo Update para o Z-Brush!
+http://t.co/27KbzLof
+Nova versão da Engine Unity para download!
+http://t.co/xXZ4mM7B http://t.co/bCXwEJSE
+Revista CG Arena de Fevereiro - Março!
+http://t.co/nfoKdppJ http://t.co/B2qiFm0E
+Revista CG Arena de Fevereiro - Março!
+http://t.co/nfoKdppJ
+Vídeo do Plug-in Z-Spheres para o 3ds max!
+http://t.co/0r9LlYIN http://t.co/c4EpMrjH
+Quando a “inspiração” de fazer um game passa dos limites!
+http://t.co/xSSi3Qp6
+Microsoft lançou o Kinect para Windows!
+http://t.co/HDemmE51
+Firefox 10 vem com mais novidades debaixo do capô!
+http://t.co/9PU81Njj
+Script para projeção de texturas!
+http://t.co/mqVjBse6
+Pixologic lançou o Z-Brush 4 R2b!
+http://t.co/i63FPFmL
+Pessoal, vejam o trailer do novo projeto da Unidev. O Big Five Hunter!
+Estaremos dia 28 e 29 de Janeiro no evento... http://t.co/iJKgG9Du
+Tutorial explicando tudo sobre Bit Depth!
+http://t.co/ZpnD7xMv
+Script para criar árvores no 3ds max!
+http://t.co/eq1S9I8R
+Tutorial sobre árvores Real Time na Engine UDK!
+http://t.co/JKaichms
+Desafio de desenvolver um game em 48 horas!
+http://t.co/qvI4UeJZ
+Script para agilizar a Viewport na animação!
+http://t.co/56z0F5Tq http://t.co/tQOlM35V
+Review dos Softs 3D da Autodesk versão 2012!
+http://t.co/fmrb4cru http://t.co/pDw7DlA7
+Tutorial sobre pós-produção no Photoshop!
+http://t.co/w4qA0KAJ http://t.co/DoAMlAjS
+Nova ferramenta para criar cabelos no Z-Brush!
+http://t.co/GvCJFdXf http://t.co/8lXkYf4g
+Novo sistema de Mocap que usa 2 Kinects!
+http://t.co/pNP3Ki1W http://t.co/ReBZ0MOk
+Retrode lança adaptador de jogos de cartucho para PCs!
+http://t.co/ig1P5nko http://t.co/cXYGscO9
+Criando uma cidade low poly!
+http://t.co/AdB72Tpy http://t.co/aIFcNICv
+Joga Brasil confirmado!
+http://t.co/O4VEnqfW http://t.co/mtpPDoNK
+Making Of 'Medieval Daredevil!
+http://t.co/SqZFmqam http://t.co/k5d6nkih
+Kinect vai ser usado para monitorar peso de astronautas!
+http://t.co/Jblr3CNQ http://t.co/3eeWypjZ
+Windows 8 build 8172 capturado em imagens!
+http://t.co/emoYmcCK http://t.co/CsHTguF4
+Nunca foi tão fácil rabiscar em imagens no iPad!
+http://t.co/5x5XXivz http://t.co/b4qmknoH
+Novo programa online para criar animações!
+http://t.co/n476wHd1 http://t.co/dIGQ5Uxj
+Promoção de fim de ano do Steam,75% de desconto!
+http://t.co/1oEQMbQc http://t.co/hntswsuF
+Novo site de downloads de imagens panorâmicas de céus!
+http://t.co/EpWjURbX http://t.co/tgJ3h8sY
+Dilma sanciona lei que desonera folha de pagamento em TI!
+http://t.co/cyjPFUUK http://t.co/NjLYX7P0
+Dilma sanciona lei que desonera folha de pagamento em TI!
+http://t.co/IUiekOQa
+Motorola lança Xoom 2 ME no Brasil por R$ 1,3 mil!
+http://t.co/Izv2Gmtw
+Primeiro monitor 3D holográfico interativo!
+http://t.co/04nQRrsD
+Comissão da Câmara aprova benefícios fiscais para jogos!
+http://t.co/nOwHyeoD
+Soft nacional para captura de movimentos!
+http://t.co/3I9e7yOD
+Nova versão do Plug-in City Traffic!
+http://t.co/CERP3zd3
+Zynga e a brasileira Vostu entram em acordo!
+http://t.co/9ukH4eoR
+Vídeo de tecnologias apresentadas no AU!
+http://t.co/3BqiGzap
+Nova edição da revista gratuita da CG Arena!
+http://t.co/hOtRCPKo http://t.co/eJQHneQm
+Demonstração do Fabric Engine!
+http://t.co/qjEh5rva
