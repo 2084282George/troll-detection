@@ -1,15 +1,24 @@
 #!/usr/bin/env python
 import io
 import sys
+import time
 
-f1 = set(io.open(sys.argv[1], "r+").read().split())
-f2 = set(io.open(sys.argv[2], "r+").read().split())
+def run(file1, file2):
+    start = time.time()
 
-i=0
+    f1 = set(io.open(file1, "r+").read().split())
+    f2 = set(io.open(file2, "r+").read().split())
+
+    i=0
 
 
-for item in f1:
-    if item in f2:
-        i+=1
+    for item in f1:
+        if item in f2:
+            i+=1
 
-print sys.argv[1] + "," + sys.argv[2] + "," + `len(f1)` + "," + `len(f2)` + "," + `i`
+    tTaken = time.time() - start
+
+    return file1 + ", " + file2 + ", " + `len(f1)` + ", " + `len(f2)` + ", " + `i` + ", " + str(tTaken)
+
+if __name__ == "main":
+    run(sys.argv[1], sys.argv[2])
