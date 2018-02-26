@@ -1,13 +1,18 @@
-import naiveBagOfWords
+import treeTester
 import glob
 import io
 import random
+from bllipparser import RerankingParser
+
+rrp = RerankingParser.fetch_and_load('WSJ-PTB3', verbose=False)
+
+print rrp.simple_parse("Heyo what's going on here")
 
 allUsers1 = glob.glob('./newSamples/*_1.txt')
 
 allUsers2 = glob.glob('./newSamples/*_2.txt')
 
-fNaive = io.open("./runs/NaiveTest.csv",'w')
+fNaive = io.open("./runs/TreeTest.csv",'w')
 
 totalComparisons = len(allUsers1)*100
 
@@ -19,12 +24,13 @@ percentDone = 0
 
 done = 0
 
+
 for x in allUsers1:
-    fNaive.write(unicode(naiveBagOfWords.run(x, x[:-5]+'2.txt')))
+    fNaive.write(unicode(treeTester.run(x, x[:-5]+'2.txt', rrp)))
     fNaive.write(u'\n')
     for y in range(0,100):
         z = random.randint(0, len(allUsers2)-1)
-        fNaive.write(unicode(naiveBagOfWords.run(x, allUsers2[z])))
+        fNaive.write(unicode(posTester.run(x, allUsers2[z])))
         fNaive.write(u'\n')    
         
         done +=1

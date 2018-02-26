@@ -8,7 +8,7 @@ allUsers1 = glob.glob('./newSamples/*_1.txt')
 
 allUsers2 = glob.glob('./newSamples/*_2.txt')
 
-fNaive = io.open("./runs/SecondTest.csv",'w')
+fNaive = io.open("./runs/POSTest.csv",'w')
 
 totalComparisons = len(allUsers1)*100
 

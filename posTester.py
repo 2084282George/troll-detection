@@ -161,3 +161,7 @@ def run(file1, file2):
 
     output = file1 + ", " +  file2 + ", " + str(len(f1)) + ", " + str(len(f2)) + ", " + str(mDist1) + ", " + str(lcs1) + ", " + str(mLength1) + ", " +str(mDist2) + ", " + str(lcs2) + ", " + str(mLength2) + ", " + str(mDist3) + ", " + str(lcs3) + ", " + str(runTime)
     return output
+
+
+if __name__ == "__main__":
+    print run(sys.argv[1], sys.argv[2])

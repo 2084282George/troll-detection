@@ -20,5 +20,5 @@ def run(file1, file2):
 
     return file1 + ", " + file2 + ", " + `len(f1)` + ", " + `len(f2)` + ", " + `i` + ", " + str(tTaken)
 
-if __name__ == "main":
-    run(sys.argv[1], sys.argv[2])
+if __name__ == "__main__":
+    print run(sys.argv[1], sys.argv[2])

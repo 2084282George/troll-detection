@@ -17,15 +17,15 @@ import numpy as np
 
 importer = DictImporter()
 
-rrp = RerankingParser.fetch_and_load('WSJ-PTB3', verbose=False)
+#rrp = RerankingParser.fetch_and_load('WSJ-PTB3', verbose=False)
 
-grammar = r"""
-  NP: {<DT|JJ|NN.*>+}          # Chunk sequences of DT, JJ, NN
-  PP: {<IN><NP>}               # Chunk prepositions followed by NP
-  VP: {<VB.*><NP|PP|CLAUSE>+$} # Chunk verbs and their arguments
-  CLAUSE: {<NP><VP>}           # Chunk NP, VP
-"""
-chunker = nltk.RegexpParser(grammar)
+#grammar = r"""
+#  NP: {<DT|JJ|NN.*>+}          # Chunk sequences of DT, JJ, NN
+#  PP: {<IN><NP>}               # Chunk prepositions followed by NP
+#  VP: {<VB.*><NP|PP|CLAUSE>+$} # Chunk verbs and their arguments
+#  CLAUSE: {<NP><VP>}           # Chunk NP, VP
+#"""
+#chunker = nltk.RegexpParser(grammar)
 
 
 def pruneTree(tree):
@@ -42,7 +42,7 @@ def pruneTree(tree):
     return newT
 
 
-def makeTrees (f):
+def makeTrees (f, rrp):
     trees = []
     #x = 0
     for tweet in f:
@@ -143,7 +143,7 @@ def nodeDist(A, B):
     else:
         return 1
 
-def run(file1, file2):
+def run(file1, file2, rrp):
 
     start = time.time()
 
@@ -154,7 +154,12 @@ def run(file1, file2):
     if len(f1) == 0 or len(f2)== 0:
         return "at least one of the lists has no tweets, so quitting."
 
-    trees1 = makeTrees(f1)
+
+    treeTimeTest = time.time()
+    trees1 = makeTrees(f1, rrp)
+    treeTimeTest = time.time() - treeTimeTest
+
+    print "spent",treeTimeTest,"on making",len(f1),"trees"
 
     #print len(trees1)
     #print "\n***\n"
@@ -166,13 +171,15 @@ def run(file1, file2):
 
     done = 0
 
+    compTimeTest = time.time()
     for x in trees1:
         #length.append(len(x))
         for y in trees1:
             distance = zss.simple_distance(x, y, label_dist= nodeDist)
             distancesWithin.append(distance)
             done+=1
-            #print "Done %i comparisons", done
+    compTimeTest = time.time() - compTimeTest
+    print "spent",compTimeTest,"on doing",len(f1)**2,"comparisons"
 
     mDist1 = np.mean(distancesWithin)
     #mL = np.mean(length)
@@ -181,7 +188,7 @@ def run(file1, file2):
     #pprint (mL)
 
 
-    trees2 = makeTrees(f2)
+    trees2 = makeTrees(f2, rrp)
 
     #print len(trees1)
     #print "\n***\n"
@@ -228,4 +235,9 @@ def run(file1, file2):
     #print "\n***\n"
 
     output =  file1 + ", " +  file2 + ", " + str(len(f1)) + ", " + str(len(f2)), ", " +  str(mDist1) + ", " +  str(mDist2),", ", str(mDist3) + ", "+ str(runTime)
+    print output
     return output
+
+if __name__ == "__main__":
+    rrp = RerankingParser.fetch_and_load('WSJ-PTB3', verbose=False)
+    run(sys.argv[1], sys.argv[2], rrp)
