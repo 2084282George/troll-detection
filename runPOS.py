@@ -1,4 +1,3 @@
-import naiveBagOfWords
 import posTester
 import glob
 import io
