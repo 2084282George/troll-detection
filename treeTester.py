@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-import nltk
+#import nltk
 import io
 import sys
 from bllipparser import RerankingParser
@@ -7,10 +7,11 @@ from anytree import Node, RenderTree
 from anytree.importer import DictImporter
 import time
 import zss
-import editdistance
+#import editdistance
 from zss import Node
 from pprint import pprint
 import numpy as np
+import re
 
 #print len(f1)
 #print len(f2)
@@ -47,18 +48,24 @@ def makeTrees (f, rrp):
     #x = 0
     for tweet in f:
         newTweet = tweet.encode('ascii', 'ignore').replace("@", "")
-        if len(newTweet)!=0:
-            newTree = rrp.simple_parse(newTweet)
-            sTree = parse_sexp(newTree)
-            #pprint(sTree)
-            dTree = tMake(sTree[0])
-            root = importer.import_(dTree)
-            trees.append(root)
-            #x+=1
-            #print "done " + str(x) + " tweets"
+        #print re.search('[a-zA-Z]', newTweet)
+        if re.search('[a-zA-Z]', newTweet):
+            if len(newTweet)!=0:
+                newTree = rrp.simple_parse(newTweet)
+                sTree = parse_sexp(newTree)
+                #pprint(sTree)
+                dTree = tMake(sTree[0])
+                with open('./DictStore.pkl', 'a') as output:
+                    output.write(unicode(dTree))
+                    output.write(u"\n")
+                root = importer.import_(dTree)
+                #print RenderTree(root)
+                trees.append(root)
+                #x+=1
+                #print "done " + str(x) + " tweets"
     return trees
 
-def makePOS (f):
+"""def makePOS (f):
     trees = []
     for tweet in f:
         newTweet = tweet.encode('ascii', 'ignore').replace("@", "")
@@ -66,7 +73,7 @@ def makePOS (f):
             newTree2 = nltk.pos_tag(nltk.word_tokenize(newTweet))
 
             trees.append([x[1] for x in newTree2])
-    return trees
+    return trees"""
 
 def parse_sexp(string):
     """
@@ -142,6 +149,59 @@ def nodeDist(A, B):
         return 0
     else:
         return 1
+
+
+def runSingle(file, rrp):
+    start = time.time()
+    f1 = io.open(file, "r+").read().splitlines()
+    if len(f1) == 0:
+        return "NO TWEETS, EXITING"
+    
+    with open('./DictStore.pkl', 'a') as output:
+        output.write(unicode(file))
+        output.write(u'\n')
+
+    treeTimeTest = time.time()
+    trees1 = makeTrees(f1, rrp)
+    treeTimeTest = time.time() - treeTimeTest
+
+    print "spent",treeTimeTest,"on making",len(f1),"trees"
+
+    distancesWithin = []
+    #length = []
+
+    done = 0
+
+    compTimeTest = time.time()
+    for x in trees1:
+        #length.append(len(x))
+        for y in trees1:
+            distance = zss.simple_distance(x, y, label_dist= nodeDist)
+            distancesWithin.append(distance)
+            done+=1
+    compTimeTest = time.time() - compTimeTest
+    print "spent",compTimeTest,"on doing",len(f1)**2,"comparisons"
+
+    mDist1 = np.mean(distancesWithin)
+
+    stop = time.time() - start
+
+    return (mDist1, stop, trees1)
+
+
+def runDouble(trees1, trees2):
+    
+    distancesWithin = []
+
+    for x in trees1:
+        for y in trees2:
+            distancesWithin.append(zss.simple_distance(x, y))      
+
+    mDist3 = np.mean(distancesWithin)
+
+    return mDist3
+
+
 
 def run(file1, file2, rrp):
 
@@ -234,10 +294,10 @@ def run(file1, file2, rrp):
     #pprint(trees2)
     #print "\n***\n"
 
-    output =  file1 + ", " +  file2 + ", " + str(len(f1)) + ", " + str(len(f2)), ", " +  str(mDist1) + ", " +  str(mDist2),", ", str(mDist3) + ", "+ str(runTime)
+    output =  file1 + ", " +  file2 + ", " + str(len(f1)) + ", " + str(len(f2)) + ", " +  str(mDist1) + ", " +  str(mDist2) + ", " + str(mDist3) + ", "+ str(runTime)
     print output
     return output
 
 if __name__ == "__main__":
     rrp = RerankingParser.fetch_and_load('WSJ-PTB3', verbose=False)
-    run(sys.argv[1], sys.argv[2], rrp)
+    print runSingle(sys.argv[1], rrp)

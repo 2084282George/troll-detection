@@ -32,3 +32,6 @@ for x in allUsers1:
         if done%onePercent == 0:
             print str(percentDone+1) + "% done, " + str(done) + " comparisons"
             percentDone += 1
+
+        if done%100 == 0:
+            print str(done) + " comparisons done"
