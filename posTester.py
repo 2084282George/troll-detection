@@ -164,4 +164,5 @@ def run(file1, file2):
 
 
 if __name__ == "__main__":
+    #print nltk.pos_tag(nltk.word_tokenize("The quick brown fox, it jumps over the lazy dog slowly."))
     print run(sys.argv[1], sys.argv[2])

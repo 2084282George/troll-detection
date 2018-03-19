@@ -300,4 +300,25 @@ def run(file1, file2, rrp):
 
 if __name__ == "__main__":
     rrp = RerankingParser.fetch_and_load('WSJ-PTB3', verbose=False)
-    print runSingle(sys.argv[1], rrp)
+
+    newTweet = "The quick brown fox jumps over the lazy dog."
+    
+    newTree = rrp.simple_parse(newTweet)
+    sTree = parse_sexp(newTree)
+    pprint(sTree)
+    dTree = tMake(sTree[0])
+    root = importer.import_(dTree)
+
+    print RenderTree(root)
+
+    newTweet = "The quick brown fox, it jumped over the lazy dog slowly."
+
+    newTree = rrp.simple_parse(newTweet)
+    sTree = parse_sexp(newTree)
+    pprint(sTree)
+    dTree = tMake(sTree[0])
+    root = importer.import_(dTree)
+
+    print RenderTree(root)
+
+    #print runSingle(sys.argv[1], rrp)

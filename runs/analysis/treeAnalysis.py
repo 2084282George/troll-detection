@@ -2,6 +2,7 @@ import csv
 import io
 import numpy as np
 import scipy.stats as stats
+import matplotlib.pyplot as plt
 
 with open('../POSTest.csv', 'rb') as csvfile:
     results = csv.reader(csvfile, skipinitialspace=True)
@@ -22,9 +23,9 @@ with open('../TreeTest.csv', 'rb') as csvfile:
     selfDict = {}
     for row in results:
         if row[0] != "NO TWEETS FOUND FOR USER":
-            between = 2*float(row[4]) / lenDict[row[0]] + lenDict[row[1]]
-            within1 = float(row[3]) / lenDict[row[0]]
-            within2 = float(row[2]) / lenDict[row[1]]
+            between = float(row[4]) #/ lenDict[row[0]] + lenDict[row[1]]
+            within1 = float(row[3]) #/ lenDict[row[0]]
+            within2 = float(row[2]) #/ lenDict[row[1]]
             selfDict[row[0]] = within1
             selfDict[row[1]] = within2
             diff = between - (within1 + within2)/2
@@ -32,13 +33,12 @@ with open('../TreeTest.csv', 'rb') as csvfile:
                 selfMeans.append(diff)
             else:
                 otherMeans.append(diff)
+    
 
-    selfMean = np.mean(selfMeans)
-    print selfMean
+    print selfMeans
 
 with open('../TreeTest2.csv', 'rb') as csvfile:
     results = csv.reader(csvfile, skipinitialspace=True)
-    selfMeans = []
     otherMeans = []
     for row in results:
         if row[0] != "NO TWEETS FOUND FOR USER":
@@ -55,8 +55,25 @@ with open('../TreeTest2.csv', 'rb') as csvfile:
             else:
                 otherMeans.append(diff)
 
+
+    print len(selfMeans)
+    print len(otherMeans)
+
     otherMean = np.mean(otherMeans)
     print otherMean
+
+    n, bins, patches = plt.hist(otherMeans, 100, normed=True, facecolor='green', alpha=0.75)
+
+    plt.xlabel('Tree Edit Distance')
+    plt.ylabel('Accounts (Normalised)')
+    plt.title('Mean Tree Edit Distance Between 2 Accounts')
+    plt.axis([0, 500, 0, 0.02])
+    plt.grid(True)
+
+    plt.show()
+
+    selfMean = np.mean(selfMeans)
+    print selfMean
 
     t_stat, p_val = stats.ranksums(selfMeans, otherMeans)
 

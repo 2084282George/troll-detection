@@ -2,6 +2,7 @@ import csv
 import io
 import numpy as np
 import scipy.stats as stats
+import matplotlib.pyplot as plt
 
 with open('../NaiveTest.csv', 'rb') as csvfile:
     results = csv.reader(csvfile, skipinitialspace=True)
@@ -17,6 +18,16 @@ with open('../NaiveTest.csv', 'rb') as csvfile:
             else:
                 otherRatio.append(ratio)
     
+    n, bins, patches = plt.hist(selfRatio, 200, facecolor='green', alpha=0.75)
+    
+    plt.xlabel('Ratio of Words in Each Set to Words in Both')
+    plt.ylabel('Number of Accounts')
+    plt.title('Histogram Within a Single Account')
+    plt.axis([0,1, 0, 60])
+    plt.grid(True)
+
+    plt.show()
+
     selfMean = np.mean(selfRatio)
     print selfMean
     otherMean = np.mean(otherRatio)
