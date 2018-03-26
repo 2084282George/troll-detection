@@ -25,7 +25,7 @@ for x in allUsers1:
     for y in range(0,100):
         z = random.randint(0, len(allUsers2)-1)
         fNaive.write(unicode(naiveBagOfWords.run(x, allUsers2[z])))
-        fNaive.write(u'\n')    
+        fNaive.write(u'\n')
         
         done +=1
 

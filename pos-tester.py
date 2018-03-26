@@ -68,6 +68,8 @@ def parse_sexp(string):
             word += char
     return sexp[0]
 
+#https://stackoverflow.com/questions/24547641/python-length-of-longest-common-subsequence-of-lists/24547864
+
 def lcs_length(a, b):
     table = [[0] * (len(b) + 1) for _ in xrange(len(a) + 1)]
     for i, ca in enumerate(a, 1):

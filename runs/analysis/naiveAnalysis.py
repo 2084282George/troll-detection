@@ -18,15 +18,50 @@ with open('../NaiveTest.csv', 'rb') as csvfile:
             else:
                 otherRatio.append(ratio)
     
-    n, bins, patches = plt.hist(selfRatio, 200, facecolor='green', alpha=0.75)
+    n, bins, patches = plt.hist(selfRatio, 200,normed=True, facecolor='green', alpha=0.75)
+
+    n2, bins2, patches2 = plt.hist(otherRatio, 200, normed=True,  facecolor='blue', alpha=0.75)
     
     plt.xlabel('Ratio of Words in Each Set to Words in Both')
-    plt.ylabel('Number of Accounts')
-    plt.title('Histogram Within a Single Account')
-    plt.axis([0,1, 0, 60])
+    plt.ylabel('Number of Accounts (Normalised)')
+    plt.title('Histogram for Bag of Words')
+    plt.axis([0,1, 0, 8])
     plt.grid(True)
 
     plt.show()
+
+    selfAbove = []
+
+    otherAbove = []
+
+    for item in selfRatio:
+        if item > 0.25:
+            selfAbove.append(item)
+
+    for item in otherRatio:
+        if item > 0.25:
+            otherAbove.append(item)
+
+    print "***SELF ABOVE 0.25***"
+
+    print len(selfRatio)
+    print len(selfAbove)
+
+    selfC = 1.0 * len(selfAbove) / len(selfRatio)
+
+    print selfC
+
+    print "***OTHER ABOVE 0.25***"
+
+    print len(otherRatio)
+    print len(otherAbove)
+
+    otherC = 1.0 * len(otherAbove) / len(otherRatio)
+
+    print otherC
+
+    print 100 - ((otherC/selfC) *100)
+
 
     selfMean = np.mean(selfRatio)
     print selfMean
