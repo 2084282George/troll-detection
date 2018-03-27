@@ -9,10 +9,10 @@ import time
 import sys
 
 #Variables that contains the user credentials to access Twitter API
-access_token = "1154478061-irvRElFnzbyktMD5LtUgY6KJ2cfKhV6qBJwuyhO"
-access_token_secret = "65jHAVRDxFTu0ArfWpnHy8pD17VBMgcgvW4NjhSE0MJcs"
-consumer_key = "glpgm50xNmf08m9t0EzZtEdwL"
-consumer_secret = "6uXDpXeu9a48aA0Wz504fD9ywrdj4dXFL82Zab88WQJvtJdnm7"
+access_token = "ADD TOKENS HERE"
+access_token_secret = "ADD TOKENS HERE"
+consumer_key = "ADD TOKENS HERE"
+consumer_secret = "ADD TOKENS HERE"
 
 auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
 auth.set_access_token(access_token, access_token_secret)

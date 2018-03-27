@@ -29,20 +29,6 @@ importer = DictImporter()
 #chunker = nltk.RegexpParser(grammar)
 
 
-def pruneTree(tree):
-    newT = ""
-    sT = tree.split()
-    for item in sT:
-        if item[0] == "(":
-            newT += item
-        else:
-            for char in item:
-                if char == ")":
-                    newT += char
-    print newT
-    return newT
-
-
 def makeTrees (f, rrp):
     trees = []
     #x = 0
